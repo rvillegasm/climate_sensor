@@ -1,14 +1,12 @@
 #![feature(proc_macro_hygiene, decl_macro)]
 
 #[macro_use] extern crate rocket;
+extern crate serde;
+extern crate mongodb;
+extern crate bson;
 
-use rocket::http::RawStr;
-
-#[get("/<name>")]
-fn world(name: &RawStr) -> String {
-    format!("Hello, {}!", name.as_str())
-}
+mod sensors;
 
 fn main() {
-    rocket::ignite().mount("/hello", routes![world]).launch();
+    rocket::ignite().mount("/climate", routes![sensors::create_entry]).launch();
 }
