@@ -8,6 +8,7 @@ edition = "2018"
 
 [dependencies]
 rocket = {verision = "0.4.2", default_features = false}
+rocket_cors = "0.5.1"
 mongodb = "0.9.1"
 bson = "0.14.0"
 serde =  { version = "1.0.104", features = ["derive"] }

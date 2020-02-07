@@ -49,6 +49,10 @@ impl SensorsDB {
             match result {
                 Ok(document) => {
                     let sensor = Sensor::new(
+                        Some(document
+                            .get("_id")
+                            .and_then(bson::Bson::as_object_id).unwrap().clone()
+                        ),
                         document
                             .get("temperature")
                             .and_then(bson::Bson::as_f64)
