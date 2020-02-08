@@ -61,6 +61,18 @@ impl SensorsDB {
                             .get("humidity")
                             .and_then(bson::Bson::as_f64)
                             .unwrap(),
+                        document
+                            .get("latitude")
+                            .and_then(bson::Bson::as_f64)
+                            .unwrap(),
+                        document
+                            .get("longitude")
+                            .and_then(bson::Bson::as_f64)
+                            .unwrap(),
+                        document
+                            .get("mac_addr")
+                            .and_then(bson::Bson::as_str)
+                            .unwrap().to_string(),
                     );
                     sensors.push(sensor);
                 }

@@ -11,7 +11,12 @@ export default new Router({
     {
       path: '/',
       name: 'Hello',
-      component: Hello
+      component: Hello,
+      beforeEnter: (_, from, next) => {
+        next({
+          name: 'Login'
+        });
+      }
     },
     {
       path: '/login',
@@ -23,7 +28,7 @@ export default new Router({
       name: 'Sensors',
       component: Sensors,
       beforeEnter: (_, from, next) => {
-        if (from.name === 'Login') {
+        if (from.name === 'Login' || from.name === 'Sensors') {
           next();
         }
         else {

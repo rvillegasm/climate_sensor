@@ -18,7 +18,7 @@ because of how **fast** programs written in it can be, and how it's
 *ownership system* makes it pretty much the **safest** programming
 language out there. *(If you want to know more about `Rust` and the
 benefits of using it, check out their web page right 
-[here](https://wwwrust-lang.org/))*.
+[here](https://www.rust-lang.org/))*.
 
 I also used `Rocket`, the best web framework available for `Rust`. As
 said by it's developers, `Rocket` "makes it simple to write *fast*

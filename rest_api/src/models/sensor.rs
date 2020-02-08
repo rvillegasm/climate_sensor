@@ -7,14 +7,20 @@ pub struct Sensor {
     id: Option<ObjectId>,
     temperature: f64,
     humidity: f64,
+    latitude: f64,
+    longitude: f64,
+    mac_addr: String,
 }
 
 impl Sensor {
-    pub fn new(id: Option<ObjectId>, temperature: f64, humidity: f64) -> Sensor {
+    pub fn new(id: Option<ObjectId>, temperature: f64, humidity: f64, latitude: f64, longitude: f64, mac_addr: String) -> Sensor {
         Sensor {
             id,
             temperature,
             humidity,
+            latitude, 
+            longitude, 
+            mac_addr,
         }
     }
 }
