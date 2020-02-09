@@ -1,14 +1,28 @@
-# Climate Sensor
+# Climate Sensor - Telematics Project
 
-This proyect aims to keep track of **geolocational data** collected by
-*arduino* devices, such as **temperature**, **humidity** and 
+This project aims to keep track of **geolocational data** collected by
+*IOT* devices, such as **temperature**, **humidity** and 
 **GPS coordinates**, by using a *REST api*. All of that data can then be
-viewed by the target users by means of a *front-end web app*, which was
+viewed by the end users by means of a *front-end web app*, which was
 designed on par with the REST service.
 
 ## Functional Requirements
+- The REST service must be able to continuously recieve data sent by IOT
+  devices, process them, and store them in a database.
+- There must be an authentication process for both users and
+  IOT devices.
+- The end users must be able to see the data stored in the database.
 
 ## Non-Functional Requirements
+- **Security:** The REST service must associate every recieved entry
+  to a physical device, just in case the data needs to be traced back
+  to its source. It should also prevent badly formed data to be inserted
+  into the database.
+- **Scalability:** The system must be easly modifiable, in case that a
+  new functionality needs to be added to it.
+- **Availability:** The system must be up and running 24/7, because the
+  IOT devices will be sending data to it constantly, and the end users
+  must be able to see the data at any time.
 
 ## Technologies used
 ### Backend
@@ -80,3 +94,40 @@ I learnt a fair amount of information about frontend
 programming (specially about how *single-page apps* work), and though I
 still don't really like it, now I can defend
 myself in that terrirory if I ever have to.
+
+## How To Run It Locally
+### Backend
+First of all, you will need to install ***Rust*** on your system.
+The best way to do that is by using the **rustup** tool made by the rust
+developers. To get it go to their official 
+[website](https://www.rust-lang.org/tools/install) and follow the
+install instructions for your particular OS.
+
+After installing **rustup**, go to the rest_api directory and run: 
+```bash
+$ rustup override set nightly 
+ ```
+This will set the nightly version of rust as the default one for this
+project, which is needed to run the full version of ***Rocket***.
+
+After you have that all set up, compile and run the REST api by using
+**cargo**, Rust's package manager (It was automatically installed with
+rustup):
+```bash
+$ cargo run
+```
+
+There you go! Now you have an instance of the REST api.
+
+**Note:** If by some chance you have problems with Rust nightly, check
+out Rocket's [getting started guide](https://rocket.rs/v0.4/guide/getting-started/).
+
+### Frontend
+Go to the front directory and run:
+```bash
+$ npm install
+$ npm run dev
+```
+This will install all the needed dependencies and run the development
+server, which will run your web app on *localhost:8080*. Make sure that
+you have a recent version of node and npm installed.
